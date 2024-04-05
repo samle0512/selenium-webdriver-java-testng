@@ -92,25 +92,18 @@ public class Topic_08_Textbox_Textarea {
         driver.findElement(By.xpath("//div[@class='footer']//a[@title='My Account']")).click();
         sleepInSeconds(2);
 
-        String firstname = "Automation", lastname = "FC", emailAddress="", password="";
+        String firstname = "Automation", lastname = "FC", emailAddress = "", password = "";
         String fullname = firstname + " " + lastname;
         //Register
-        sleepInSeconds(2);
         driver.findElement(By.xpath("//a[@title='Create an Account']")).click();
         sleepInSeconds(2);
 
         driver.findElement(By.cssSelector("input#firstname")).sendKeys(firstname);
-        sleepInSeconds(1);
         driver.findElement(By.cssSelector("input#lastname")).sendKeys(lastname);
-        sleepInSeconds(1);
         driver.findElement(By.cssSelector("input#email_address")).sendKeys(emailAddress);
-        sleepInSeconds(1);
         driver.findElement(By.cssSelector("input#password")).sendKeys(password);
-        sleepInSeconds(1);
         driver.findElement(By.cssSelector("input#confirmation")).sendKeys(password);
-        sleepInSeconds(1);
         driver.findElement(By.xpath("//button[@title='Register']")).click();
-
         //Verify
         Assert.assertEquals(driver.findElement(By.cssSelector("li.success-msg span")).getText(), "Thank you for registering with Main Website Store.");
         Assert.assertEquals(driver.findElement(By.cssSelector("div.welcome-msg strong")).getText(), "Hello," + firstname + lastname + "!");

@@ -88,9 +88,23 @@ public class Topic_21_Upload_File {
     }
     @Test
     public void TC_03_() {
-        String projectPath = System.getProperty("user.dir");
-        System.out.println(projectPath);
+        driver.get("https://blueimp.github.io/jQuery-File-Upload/");
 
+        By uploadFiles = By.xpath("//input[@type='file']");
+        driver.findElement(uploadFiles).sendKeys(name1Path + "\n" + name2Path);
+        sleepInSeconds(2);
+
+        Assert.assertTrue(driver.findElement(By.xpath("//p[@class='name' and text()='" + name1 + "']")).isDisplayed());
+        Assert.assertTrue(driver.findElement(By.xpath("//p[@class='name' and text()='" + name2 + "']")).isDisplayed());
+
+        List<WebElement> uploadButtons = driver.findElements(By.cssSelector("td>button.start"));
+
+        for (WebElement button:uploadButtons){
+            button.click();
+            sleepInSeconds(3);
+        }
+        Assert.assertTrue(driver.findElement(By.xpath("//p[@class='name']/a[@title='" + name1 + "']")).isDisplayed());
+        Assert.assertTrue(driver.findElement(By.xpath("//p[@class='name']/a[@title='" + name2 + "']")).isDisplayed());
     }
     @AfterClass
     public void afterClass() {

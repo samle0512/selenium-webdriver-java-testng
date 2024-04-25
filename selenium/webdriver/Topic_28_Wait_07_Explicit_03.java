@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 import java.io.File;
 import java.time.Duration;
 
-public class Topic_27_Wait_07_Explicit_03 {
+public class Topic_28_Wait_07_Explicit_03 {
 
     WebDriver driver;
 
